@@ -1,0 +1,32 @@
+<odoo>
+  <data>
+    <record id="res_config_settings_view_form_inherit_custom_seq" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.custom_seq</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@class='app_settings_block']/div[@id='invite_users']" position="after">
+                <div id="sequence">
+                  <h2>Sequence</h2>
+                  <div class="row mt16 o_settings_container">
+                    <div class="col-12 col-lg-6 o_setting_box">
+                        <!-- <div class="o_setting_left_pane"> 
+                         </div> -->
+                        <div class="o_setting_right_pane">
+                            <!-- <label string="Sequence Code" for="seq_code"/> -->
+                            <div class="content-group">
+                                <div class="mt16">
+                                    <label for="seq_code" class="o_light_label"/>
+                                    <field name="seq_code" class="oe_inline" widget="radio"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+  </data>
+</odoo>
