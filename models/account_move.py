@@ -75,14 +75,11 @@ class AccountMove(models.Model):
                 if self.type=='out_invoice' and seq_code != 'default':
                     final_seq = ''
                     sequence = ''
-                    # if seq_code == 'customer':
                     sequence=self.env['ir.sequence'].next_by_code('account.invoice.sequence') or _('New')
-                    # elif seq_code == 'product_categ':
-                    #     sequence=self.env['ir.sequence'].next_by_code('account.invoice.sequence') or _('New')
                     if seq_code == 'customer' and self.partner_id:
-                        final_seq =  self.partner_id.customer_code
+                        final_seq =  self.partner_id.customer_code or ''
                     elif seq_code == 'product_categ' and self.invoice_line_ids:
-                        final_seq =  self.invoice_line_ids[0].product_id and self.invoice_line_ids[0].product_id.categ_id.c_code  
+                        final_seq =  self.invoice_line_ids[0].product_id and self.invoice_line_ids[0].product_id.categ_id.c_code  or ''
                     year = datetime.datetime.now().year
                     final_seq = final_seq + sequence + "/"+ str(year)    
                     to_write['name'] = final_seq
